@@ -345,6 +345,7 @@ BUNNY.DS.linkList = function(){
 						
 					if(searchResult.prev.prev === null){
 						// item to be removed is the first item in the list
+						head = head.next;
 						searchResult.current.prev = null;
 						//searchResult.prev.next = null;
 					}
@@ -357,7 +358,7 @@ BUNNY.DS.linkList = function(){
 					searchResult.prev.next = null;
 					searchResult.prev.prev = null;
 					
-					//delete searchResult.prev;
+					delete searchResult.prev;
 					
 					len--;
 					
