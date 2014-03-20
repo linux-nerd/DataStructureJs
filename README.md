@@ -1,11 +1,9 @@
-======================================================================
 
 							## DataStructureJS
 											
 =======================================================================
 
-### This library provides baked data structures in javascript
-### with all possible functionalities
+### This library provides baked data structures in javascript with all possible functionalities
 -----------------------------------------------------------------------
 
 ## Implemented so far - 
