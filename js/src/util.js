@@ -4,6 +4,10 @@ BUNNY.DS.util = {
 	},
 	
 	makeBSTNode: function(){
-		
+		return {
+			data: null,
+			left: null,
+			right: null
+		}
 	}
 }

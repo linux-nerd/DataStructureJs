@@ -76,6 +76,14 @@
 				~ clear()
 				~ size()
 		# Priority Queue
+		# Binary Search tree
+			Completed:
+				~ isEmpty()
+				~ size()
+				~ getNode()
+				~ add(o)
+			TODO:
+				~ remove(o) - Working on 
 		
 
 ======================================================================
