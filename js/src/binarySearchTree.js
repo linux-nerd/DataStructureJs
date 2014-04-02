@@ -165,12 +165,24 @@ BUNNY.DS.binarySearchTree = function(){
 		
 	}
 	
+	//calculate height of the tree
+	function getHeight(){
+		
+	}
+	
+	//calculate depth of the node
+	function getDepth(o){
+		
+	}
+	
 	
 	return{
 		isEmpty: util.isEmpty,
 		size: util.size,
 		getNode: util.getNode,
 		add: add,
-		remove: remove
+		remove: remove,
+		height: getHeight,
+		depth: getDepth
 	};
 };
