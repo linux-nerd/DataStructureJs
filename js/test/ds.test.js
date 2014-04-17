@@ -449,5 +449,27 @@ test("Binary Search Tree Functionality", function(){
 	//empty list has head as null
 	deepEqual(bst.getNode(), d1, "New BST constructed.");
 	
+	//remove node with data 9
+	bst.remove(2);
 	
+	//update the dummy
+	d2.left = null;
+	//get size of the tree
+	equal(bst.size(), 5, "After adding 6 nodes, BST has a size of 5.");
+	
+	//empty list has head as null
+	deepEqual(bst.getNode(), d1, "New BST constructed.");
+	
+	//delete node 7
+	bst.remove(7);
+	
+	//update dummy data
+	d1.right = d6;
+	
+	//check size
+	equal(bst.size(), 4, "After adding 6 nodes, BST has a size of 4.");
+	
+	deepEqual(bst.getNode(), d1, "New BST constructed.");
+	
+	equal(bst.remove(234), "Error: Item not found in the BST.", "Error when trying to delete something not present in the BST.");
 });
