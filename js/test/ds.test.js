@@ -405,3 +405,49 @@ test("Simple Link List Functionality", function(){
 	deepEqual(linkList.getHead(), f, "New head is retrieved");
 	
 });
+
+//=====================================================================================================
+//test suite for Binary Search Tree
+//=====================================================================================================
+test("Binary Search Tree Functionality", function(){
+	var bst = BUNNY.DS.binarySearchTree();
+	
+	//test for the size
+	equal(bst.size(), 0, "Newly created BST has a size of 0.");
+	
+	//test is the bst is empty
+	equal(bst.isEmpty(), true, "Newly created BST is empty");
+	
+	//empty list has head as null
+	equal(bst.getNode(), null, "Empty BST has a null node");
+	
+	//add 1st node to the BST
+	bst.add(5);
+	//test for the size
+	equal(bst.size(), 1, "Newly created BST has a size of 1.");
+	
+	//add another node to the tree
+	bst.add(3);
+	bst.add(7);
+	bst.add(4);
+	bst.add(2);
+	bst.add(9);
+	
+	//create the dummy data
+	var d1 = {},
+		d2 = {},
+		d3 = {},
+		d4 = {},
+		d5 = {},
+		d6 = {};
+	d1.data = 5; d2.data = 3; d3.data = 7; d4.data = 4; d5.data = 2; d6.data = 9;
+	d1.left = d2; d1.right = d3; d2.right = d4; d2.left = d5; d3.right = d6;
+	d5.left = null; d5.right = null; d4.left = null; d4.right = null; d3.left = null; d6.left = null; d6.right = null;
+	//get size of the tree
+	equal(bst.size(), 6, "After adding 6 nodes, BST has a size of 6.");
+	
+	//empty list has head as null
+	deepEqual(bst.getNode(), d1, "New BST constructed.");
+	
+	
+});
