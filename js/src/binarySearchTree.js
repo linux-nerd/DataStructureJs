@@ -135,9 +135,9 @@ BUNNY.DS.binarySearchTree = function() {
 				if (isThere.currentNode.left == null && isThere.currentNode.right == null) {
 					//1. is a leaf
 					//simply remove the leaf node
-					if (o < isThere.parentNode) {
+					if (o < isThere.parentNode.data) {
 						isThere.parentNode.left = null;
-					} else if (o > isThere.parentNode) {
+					} else if (o > isThere.parentNode.data) {
 						isThere.parentNode.right = null;
 					}
 					delete isThere.currentNode
@@ -151,6 +151,22 @@ BUNNY.DS.binarySearchTree = function() {
 					//3. is the root node.
 				} else {
 					//4. has only one child;
+					if (o < isThere.parentNode.data) {
+						if(isThere.currentNode.left != null){
+							isThere.parentNode.left = isThere.currentNode.left;
+						}else{
+							isThere.parentNode.left = isThere.currentNode.right;
+						}
+					}else if(o > isThere.parentNode.data){
+						if(isThere.currentNode.left != null){
+							isThere.parentNode.right = isThere.currentNode.left;
+						}else{
+							isThere.parentNode.right = isThere.currentNode.right;
+						}
+					}
+					delete isThere.currentNode
+					//update the size
+					len--;
 				}
 
 			} else {
