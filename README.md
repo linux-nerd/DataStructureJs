@@ -52,8 +52,6 @@
 				~ isEmpty()
 				~ size()
 				~ clear()
-
-## Working on
 		# Doubly Linked List
 			Completed:
 				~ addLast(o)
@@ -68,6 +66,15 @@
 				~ removeLast()
 				~ removeAfter(oAfter)
 				~ removeBefore(oBefore)
+		# Binary Search tree
+			Completed:
+				~ isEmpty()
+				~ size()
+				~ getNode()
+				~ add(o)
+
+## Working on
+		# Doubly Linked List
 			TODO:
 				~ addAt(i)
 				~ removeAt(i)
@@ -77,11 +84,6 @@
 				~ size()
 		# Priority Queue
 		# Binary Search tree
-			Completed:
-				~ isEmpty()
-				~ size()
-				~ getNode()
-				~ add(o)
 			TODO:
 				~ remove(o) - Working on 
 		
