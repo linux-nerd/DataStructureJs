@@ -270,7 +270,7 @@ BUNNY.DS.priorityQueue = function(){
     //true - empty
     //false - not empty
     function isEmpty(){
-    	if(pQueue){
+    	if(size()){
     		return false;
     	}else{
     		return true;
@@ -284,7 +284,7 @@ BUNNY.DS.priorityQueue = function(){
      */
     function enqueue(o, p){
     	try{
-    		if(typeof p == "number"){
+    		if(typeof p != "number"){
     			throw new Error("Priority is not an integer");
     		}
     		if(typeof o == undefined || o == null){
@@ -292,7 +292,7 @@ BUNNY.DS.priorityQueue = function(){
     		}
     		
     		//push the object in the priority queue.
-    		pQueue.push({element: o, priprity: p});
+    		pQueue.push({element: o, priority: p});
     		
     		//return the size - will be helpful for unit test
     		return size();
@@ -309,13 +309,14 @@ BUNNY.DS.priorityQueue = function(){
     		}else{
     			//check for the least priority in the queue 
     			//and then remove it from the array.
-    			var code = pQueue[0].priority;
+    			var code = pQueue[0].priority, index = 0;
     			pQueue.forEach(function(v,i){
     				if(v["priority"] < code){
-    					code = i;
+    					code = v["priority"];
+    					index = i;
     				}
     			});
-    			return pQueue.splice(code, 1);
+    			return pQueue.splice(index, 1);
     		}
     	}catch(e){
     		return e.name + ": " + e.message;
@@ -325,12 +326,12 @@ BUNNY.DS.priorityQueue = function(){
     
     return {
     	enqueue: enqueue,
-    	clear: clear,
+    	//clear: clear,
     	size: size,
     	isEmpty: isEmpty,
     	dequeue: dequeue,
-    	getQueueArray: getQueueArray,
-    	getQueueString: getQueueString
+    	//getQueueArray: getQueueArray,
+    	//getQueueString: getQueueString
     };
 };
 
