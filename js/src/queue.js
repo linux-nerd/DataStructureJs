@@ -255,11 +255,78 @@ BUNNY.DS.circularQueue = function(max){
 //(Highest Priority In, First Out: HPIFO)
 //======================================================================================================
 BUNNY.DS.priorityQueue = function(){
+	//pQueue is an array of objects
+	//each object will have an element and a priority
+	//[{element: "", priority: 1}]
+	//priority 1 > priority 5
     var pQueue = [];
+    
+    //get the length of the priority queue
+    function size(){
+    	return pQueue.length;
+    }
+    
+    //check if the priority queue was empty or not
+    //true - empty
+    //false - not empty
+    function isEmpty(){
+    	if(pQueue){
+    		return false;
+    	}else{
+    		return true;
+    	}
+    }
+    
+    /**
+     * @name enqueue
+	 * @param {Object} o
+	 * @param {Object} p
+     */
+    function enqueue(o, p){
+    	try{
+    		if(typeof p == "number"){
+    			throw new Error("Priority is not an integer");
+    		}
+    		if(typeof o == undefined || o == null){
+    			throw new Error("Element is empty");
+    		}
+    		
+    		//push the object in the priority queue.
+    		pQueue.push({element: o, priprity: p});
+    		
+    		//return the size - will be helpful for unit test
+    		return size();
+    	}catch(e){
+    		//return the error details
+    		return e.name + ": " + e.message;
+    	}
+    }
+    
+    function dequeue(){
+    	try{
+    		if(isEmpty()){
+    			throw new Error("Priority Queue is Empty.");
+    		}else{
+    			//check for the least priority in the queue 
+    			//and then remove it from the array.
+    			var code = pQueue[0].priority;
+    			pQueue.forEach(function(v,i){
+    				if(v["priority"] < code){
+    					code = i;
+    				}
+    			});
+    			return pQueue.splice(code, 1);
+    		}
+    	}catch(e){
+    		return e.name + ": " + e.message;
+    	}
+    }
+    
     
     return {
     	enqueue: enqueue,
     	clear: clear,
+    	size: size,
     	isEmpty: isEmpty,
     	dequeue: dequeue,
     	getQueueArray: getQueueArray,
@@ -366,3 +433,4 @@ BUNNY.DS.deQueue = function(){
     	clear: clear
     };
 };
+
