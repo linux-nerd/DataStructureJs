@@ -72,6 +72,12 @@
 				~ size()
 				~ getNode()
 				~ add(o)
+		# Priority Queue
+			Completed:
+				~ enqueue
+				~ dequeue
+				~ isEmpty
+				~ size
 
 ## Working on
 		# Doubly Linked List
@@ -83,6 +89,10 @@
 				~ clear()
 				~ size()
 		# Priority Queue
+			TODO: 
+				~ clear
+				~ getQueueArray
+				~ getQueueString
 		# Binary Search tree
 			TODO:
 				~ remove(o) - Working on 
