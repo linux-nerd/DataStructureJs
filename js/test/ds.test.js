@@ -596,3 +596,51 @@ test("Dictionary Functionality", function(){
 	equal(dict.size(), 0, "After clearing the dictionary, new length is 0.");
 	equal(dict.isEmpty(), true, "The dictionary is empty now.");
 });
+
+//=====================================================================================================
+//test suite for Set
+//=====================================================================================================
+test("Set Functionality", function(){
+	var set = BUNNY.DS.set();
+	
+	equal(set.size(), 0, "Newly created set has a length of 0");
+	equal(set.isEmpty(), true, "Newly created set is Empty.");
+	equal(set.remove(5), "Error: Element not found in the Set.", "Removing element from an Empty set will throw an error.");
+	
+	// add few elements in the set
+	set.add(3);
+	set.add(5);
+	set.add(7);
+	set.add(1);
+	
+	equal(set.size(), 4, "After adding 4 elements in the set, new size is 4.");
+	equal(set.isEmpty(), false, "The set is not empty.");
+	
+	equal(set.add(3), "Error: Element already in the Set.", "Entry of duplicate element in the set will an throw exception.");
+	
+	//create another set
+	var set2 = BUNNY.DS.set();
+	// add few elements in the set
+	set2.add(3);
+	set2.add(2);
+	set2.add(8);
+	set2.add(7);
+	
+	var dummyForUnion = [3, 5, 7, 1, 2, 8];
+	var dummyForIntersection = [3, 7];
+	//check for the union
+	deepEqual(set.intersection(set2).getSetArray(), dummyForIntersection, "Set returned after Intersection");
+	deepEqual(set.union(set2).getSetArray(), dummyForUnion, "Set returned after Union");
+	
+	//dummy for subset
+	var setSubset = BUNNY.DS.set();
+	
+	setSubset.add(3);
+	setSubset.add(5);
+	
+	equal(setSubset.subset(set), true, "Check if the current set is a subset of another set.");
+	equal(set2.subset(set), false, "Check if the current set is a subset of another set.");
+	
+	var dummyForDiff = [5, 1];
+	deepEqual(set.difference(set2).getSetArray(), dummyForDiff, "Difference between two sets");
+});
