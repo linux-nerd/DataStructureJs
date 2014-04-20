@@ -550,3 +550,49 @@ test("Binary Search Tree Functionality", function() {
 
 	equal(bst.remove(234), "Error: Item not found in the BST.", "Error when trying to delete something not present in the BST.");
 });
+
+//=====================================================================================================
+//test suite for Dictionary
+//=====================================================================================================
+test("Dictionary Functionality", function(){
+	var dict = BUNNY.DS.dictionary();
+	
+	//test for the size of the newly created dictionary
+	equal(dict.size(), 0, "Newly created Dictionary has a size of 0.");
+	
+	equal(dict.isEmpty(), true, "Newly created Dictionary object is empty");
+	
+	equal(dict.remove("pk"), "Error: Dictionary is Empty.", "Exception Dictionary is Empty, when trying to remove a key from empty Dictionary object.");
+	
+	//add few records to the dictionary
+	dict.add("pk", 123566);
+	dict.add("bk", 1235667);
+	dict.add("dk", 1235668);
+	dict.add("gk", 1235669);
+	dict.add("lk", 1235665);
+	
+	//create a dummy data
+	var dummy = [{key: "bk", value: 1235667}, {key: "dk", value: 1235668}, {key: "gk", value: 1235669}, {key: "lk", value: 1235665}, {key: "pk", value: 123566}];
+	
+	equal(dict.size(), 5, "After adding 5 records, new size of the dictionary object is 5.");
+	deepEqual(dict.getDictionary(), dummy, "Checking the returned records.");
+	
+	equal(dict.find("pk"), 123566, "value for key -> pk is 123566");
+	
+	equal(dict.remove("abc"), "Error: Record is not there in the Dictionary", "Exception Record is not there in the Dictionary is thrown when the key is not found.");
+	
+	dict.remove("gk");
+	dict.remove("dk");
+	
+	
+	equal(dict.size(), 3, "After deleting 2 records, new size is 3.");
+	
+	//update dummy
+	dummy.splice(2,1); dummy.splice(1,1);
+	
+	deepEqual(dict.getDictionary(), dummy, "New dictionary returned.");
+	
+	dict.clear();
+	equal(dict.size(), 0, "After clearing the dictionary, new length is 0.");
+	equal(dict.isEmpty(), true, "The dictionary is empty now.");
+});
