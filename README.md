@@ -78,6 +78,15 @@
 				~ dequeue
 				~ isEmpty
 				~ size
+		# Dictionary
+			Completed:
+				~ add
+				~ remove
+				~ find
+				~ getDictionary
+				~ size
+				~ isEmpty
+				~ clear
 
 ## Working on
 		# Doubly Linked List
