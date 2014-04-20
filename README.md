@@ -87,6 +87,19 @@
 				~ size
 				~ isEmpty
 				~ clear
+		# Set
+			Completed:
+				~ isEmpty()
+				~ size()
+				~ clear()
+				~ add()
+				~ remove()
+				~ getSetArray()
+				~ find()
+				~ union()
+				~ intersection()
+				~ subset()
+				~ difference()
 
 ## Working on
 		# Doubly Linked List
