@@ -7,90 +7,86 @@
  * pop - remove object from the top.
  */
 
-
 BUNNY.DS.stack = function(){
-    
-    //private variable
-    //only accessible by push and pop methods 
+	if(!(this instanceof BUNNY.DS.stack)){
+		return new BUNNY.DS.stack();
+	}
+};
 
-	var stack = [];
-    
-    //remove object from top of stack
-    //throw an exception when the stack is empty
-    var pop = function(){
-        try{
-            if(isEmpty()){
-                throw new Error("Cannot pop the value from the stack, since the stack is empty.");
-            }else{
-                return stack.pop();
-            }
-        }catch(e){
-            return e.name + ": " + e.message;
-        }
-        
-    };
-    
-    //insert o on top of stack
-    var push = function(o){
-        return stack.push(o);
-    };
-    
-    //look at object on top of stack (but don’t remove)
-    //throw an exception when the stack is empty.
-    var top = function(){
-        try{
-            if(isEmpty()){
-                throw new Error("Cannot get the top value from the stack, since the stack is empty.");
-            }else{
-                return stack[stack.length - 1]; 
-            }
-        }catch(e){
-            return e.name + ": " + e.message;
-        }
-    };
-    
-    //number of objects on the stack
-    var size = function(){
-        return stack.length;
-    };
-    
-    //does (size = = 0)
-    var isEmpty = function(){
-        if(size() == 0){
-            return true;
+//Extend Array
+BUNNY.DS.stack.prototype = new Array();
+
+//reset the constructor to the Stack
+BUNNY.DS.stack.prototype.constructor = BUNNY.DS.stack;
+
+/**
+ * This method returns the size of the stack
+ */
+BUNNY.DS.stack.prototype.size = function(){
+	return this.length;
+};
+
+
+/**
+ * this method checks whether the stack is empty or not
+ * returns true is the stack is empty
+ * returns false when its not
+ */
+BUNNY.DS.stack.prototype.isEmpty = function () {
+  	return (this.size() == 0);
+};
+
+/**
+ * This method push the element into the stack
+ */
+
+BUNNY.DS.stack.prototype.push = function(item){
+	return Array.prototype.push.call(this, item);
+};
+
+/**
+ * This method pops the value from the stack
+ * If the stack is empty then an error is returned
+ */
+
+BUNNY.DS.stack.prototype.pop = function(){
+	try{
+		if(this.isEmpty()){
+			throw new Error("Cannot pop the value from the stack, since the stack is empty.");
+		}else{
+			return Array.prototype.pop.call(this);
+		}
+	}catch(e){
+		return e.name + ": " + e.message;
+	}
+};
+
+/**
+ * look at object on top of stack (but don’t remove)
+ * throw an exception when the stack is empty.
+ */
+BUNNY.DS.stack.prototype.top = function(){
+	try{
+		if(this.isEmpty()){
+            throw new Error("Cannot get the top value from the stack, since the stack is empty.");
         }else{
-            return false;
+            return this[this.size() - 1]; 
         }
-    };
-    
-    //get the stack as an array
-    var getStackArray = function(){
-        return stack;
-    };
-    
-    //get the stack as string
-    var getStackString = function(){
-        return stack.join(",");
-    };
-    
-    var clear = function(){
-        stack.length = 0;
-        
-        return size();
-    }
-    
-    //exposing public methods - push, pop, top, size, isEmpty, getStackArray, getStackArray
-	return {
-		pop: pop,
-		push: push,
-        top: top,
-		size: size,
-        isEmpty: isEmpty,
-        getStackArray : getStackArray,
-        getStackString: getStackString ,
-        clear: clear
-	};
-}
+	}catch(e){
+		return e.name + ": " + e.message;
+	}
+};
+
+
+BUNNY.DS.stack.prototype.getStackString = function(){
+	// return this.join(",");
+	return this.toString();
+};
+
+BUNNY.DS.stack.prototype.clear = function(){
+	this.length = 0;
+	return this.size();
+};
 
 
 
