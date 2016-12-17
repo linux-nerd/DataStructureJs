@@ -1,8 +1,8 @@
 "use strict";
-import { Stack } from "./core";
+import { Stack, Queue } from "./core";
 
 let BUNNY = {
-    stack: Stack
+    ds: {Stack, Queue}
 };
 
-window.BUNNY = BUNNY;
+window.Bunny = BUNNY;
