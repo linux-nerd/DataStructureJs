@@ -1,4 +1,3 @@
-
 const _count = Symbol('count');
 
 export class Stack {
@@ -18,14 +17,20 @@ export class Stack {
 
     pop() {
         if(!this.isEmpty()) {
-            this.stack.pop();
+            let poppedVal = this.stack.pop();
             this[_count] -= 1;
+
+            return poppedVal;
+        }else {
+            this._throwEmptyStackError();
         }
     }
 
     peek() {
-        if(!isEmpty()) {
+        if(!this.isEmpty()) {
             return this.stack[this[_count] - 1];
+        }else {
+            this._throwEmptyStackError();
         }
     }
 
@@ -33,10 +38,16 @@ export class Stack {
         if(!this.isEmpty()) {
             this.stack.length = 0;
             this[_count] = 0;
+        }else {
+            this._throwEmptyStackError();
         }
     }
 
     isEmpty() {
         return this[_count] === 0;
+    }
+
+    _throwEmptyStackError() {
+        throw new Error("Stack is empty!");
     }
 }
