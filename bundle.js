@@ -1,2 +1,240 @@
-!function(t){function e(r){if(n[r])return n[r].exports;var u=n[r]={exports:{},id:r,loaded:!1};return t[r].call(u.exports,u,u.exports,e),u.loaded=!0,u.exports}var n={};return e.m=t,e.c=n,e.p="",e(0)}([function(t,exports,e){"use strict";var n=e(1),r={ds:{Stack:n.Stack,Queue:n.Queue}};window.Bunny=r},function(t,exports,e){"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var n=e(2);Object.keys(n).forEach(function(t){"default"!==t&&"__esModule"!==t&&Object.defineProperty(exports,t,{enumerable:!0,get:function(){return n[t]}})});var r=e(4);Object.keys(r).forEach(function(t){"default"!==t&&"__esModule"!==t&&Object.defineProperty(exports,t,{enumerable:!0,get:function(){return r[t]}})})},function(t,exports){"use strict";function e(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(exports,"__esModule",{value:!0});var n=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),r=Symbol("count");exports.Stack=function(){function t(){e(this,t),this.stack=[],this[r]=0}return n(t,[{key:"size",value:function(){return this[r]}},{key:"push",value:function(t){this.stack.push(t),this[r]+=1}},{key:"pop",value:function(){if(!this.isEmpty()){var t=this.stack.pop();return this[r]-=1,t}this._throwEmptyStackError()}},{key:"peek",value:function(){return this.isEmpty()?void this._throwEmptyStackError():this.stack[this[r]-1]}},{key:"clear",value:function(){this.isEmpty()?this._throwEmptyStackError():(this.stack.length=0,this[r]=0)}},{key:"isEmpty",value:function(){return 0===this[r]}},{key:"_throwEmptyStackError",value:function(){throw new Error("Stack is empty!")}}]),t}()},,function(t,exports){"use strict";function e(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(exports,"__esModule",{value:!0});var n=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),r=Symbol("count");exports.Queue=function(){function t(){e(this,t),this.queue=[],this[r]=0}return n(t,[{key:"enqueue",value:function(t){this.queue.unshift(t),this[r]+=1}},{key:"dequeue",value:function(){if(!this.isEmpty()){var t=this.queue.pop();return this[r]-=1,t}this._throwEmptyStackError()}},{key:"isEmpty",value:function(){return 0===this[r]}},{key:"size",value:function(){return this[r]}},{key:"top",value:function(){}},{key:"clear",value:function(){}},{key:"_throwEmptyStackError",value:function(){throw new Error("Queue is empty!")}}]),t}()}]);
-//# sourceMappingURL=bundle.js.map
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _core = __webpack_require__(1);
+
+	var BUNNY = {
+	    ds: { Stack: _core.Stack, Queue: _core.Queue }
+	};
+
+	window.Bunny = BUNNY;
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _stack = __webpack_require__(2);
+
+	Object.keys(_stack).forEach(function (key) {
+	  if (key === "default" || key === "__esModule") return;
+	  Object.defineProperty(exports, key, {
+	    enumerable: true,
+	    get: function get() {
+	      return _stack[key];
+	    }
+	  });
+	});
+
+	var _queue = __webpack_require__(3);
+
+	Object.keys(_queue).forEach(function (key) {
+	  if (key === "default" || key === "__esModule") return;
+	  Object.defineProperty(exports, key, {
+	    enumerable: true,
+	    get: function get() {
+	      return _queue[key];
+	    }
+	  });
+	});
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var _count = Symbol('count');
+
+	var Stack = exports.Stack = function () {
+	    function Stack() {
+	        _classCallCheck(this, Stack);
+
+	        this.stack = [];
+	        this[_count] = 0;
+	    }
+
+	    _createClass(Stack, [{
+	        key: "size",
+	        value: function size() {
+	            return this[_count];
+	        }
+	    }, {
+	        key: "push",
+	        value: function push(item) {
+	            this.stack.push(item);
+	            this[_count] += 1;
+	        }
+	    }, {
+	        key: "pop",
+	        value: function pop() {
+	            if (!this.isEmpty()) {
+	                var poppedVal = this.stack.pop();
+	                this[_count] -= 1;
+
+	                return poppedVal;
+	            } else {
+	                this._throwEmptyStackError();
+	            }
+	        }
+	    }, {
+	        key: "peek",
+	        value: function peek() {
+	            if (!this.isEmpty()) {
+	                return this.stack[this[_count] - 1];
+	            } else {
+	                this._throwEmptyStackError();
+	            }
+	        }
+	    }, {
+	        key: "clear",
+	        value: function clear() {
+	            if (!this.isEmpty()) {
+	                this.stack.length = 0;
+	                this[_count] = 0;
+	            } else {
+	                this._throwEmptyStackError();
+	            }
+	        }
+	    }, {
+	        key: "isEmpty",
+	        value: function isEmpty() {
+	            return this[_count] === 0;
+	        }
+	    }, {
+	        key: "_throwEmptyStackError",
+	        value: function _throwEmptyStackError() {
+	            throw new Error("Stack is empty!");
+	        }
+	    }]);
+
+	    return Stack;
+	}();
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var _count = Symbol('count');
+
+	var Queue = exports.Queue = function () {
+	    function Queue() {
+	        _classCallCheck(this, Queue);
+
+	        this.queue = [];
+	        this[_count] = 0;
+	    }
+
+	    _createClass(Queue, [{
+	        key: "enqueue",
+	        value: function enqueue(item) {
+	            this.queue.unshift(item);
+	            this[_count] += 1;
+	        }
+	    }, {
+	        key: "dequeue",
+	        value: function dequeue() {
+	            if (!this.isEmpty()) {
+	                var dequeuedVal = this.queue.pop();
+	                this[_count] -= 1;
+	                return dequeuedVal;
+	            } else {
+	                this._throwEmptyStackError();
+	            }
+	        }
+	    }, {
+	        key: "isEmpty",
+	        value: function isEmpty() {
+	            return this[_count] === 0;
+	        }
+	    }, {
+	        key: "size",
+	        value: function size() {
+	            return this[_count];
+	        }
+	    }, {
+	        key: "top",
+	        value: function top() {}
+	    }, {
+	        key: "clear",
+	        value: function clear() {}
+	    }, {
+	        key: "_throwEmptyStackError",
+	        value: function _throwEmptyStackError() {
+	            throw new Error("Queue is empty!");
+	        }
+	    }]);
+
+	    return Queue;
+	}();
+
+/***/ }
+/******/ ]);

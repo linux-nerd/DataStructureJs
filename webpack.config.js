@@ -1,11 +1,11 @@
 var path = require('path');
 var webpack = require('webpack');
 
-module.exports = {
+module.exports = [{
     entry: './src/datastructures.js',
     output: {
         path: __dirname,
-        filename: 'bundle.js'
+        filename: 'bundle.min.js'
     },
     module: {
         loaders: [
@@ -42,4 +42,30 @@ module.exports = {
     },
     // Create Sourcemaps for the bundle
     devtool: 'source-map',
-};
+}, {
+    entry: './src/datastructures.js',
+    output: {
+        path: __dirname,
+        filename: 'bundle.js'
+    },
+    module: {
+        loaders: [
+            {
+                loader: 'babel-loader',
+                test: path.join(__dirname, 'src'),
+                query: {
+                  presets: 'es2015',
+                },
+            },
+            { test: /\.hbss$/, loader: "handlebars-loader", query: { presets: 'es2015'} }
+        ]
+    },
+    plugins: [
+        // Avoid publishing files when compilation fails
+        new webpack.NoErrorsPlugin()
+    ],
+    stats: {
+        // Nice colored output
+        colors: true
+    }
+}];
