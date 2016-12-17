@@ -49,4 +49,8 @@ describe("Stack", () => {
     it("Should throw error when an empty stack is cleared.", () => {
         expect(() => stack.clear()).toThrow(new Error("Stack is empty!"));
     });
+
+    it("Should have the type stack", () => {
+        expect(stack.type).toEqual("stack");
+    });
 })

@@ -4,6 +4,7 @@ export class Stack {
     constructor() {
         this.stack = [];
         this[_count] = 0;
+        this.type = 'stack';
     }
 
     size() {
