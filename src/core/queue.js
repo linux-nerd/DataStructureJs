@@ -117,6 +117,7 @@ const _max = Symbol("max");
 export class CircularQueue extends Queue {
     constructor(max) {
         super();
+        //@override
         this.type = 'circular-queue';
 
         // private variables
@@ -126,20 +127,33 @@ export class CircularQueue extends Queue {
         this[_max] = max;
     }
 
+    /**
+     * @method
+     * @override
+     * @name enqueue
+     * @param item {any}
+     * @description Add an item to the queue. When a queue is full then throw an error.
+     */
     enqueue(item) {
+        //check if the circular queue is empty.
         if(this[_count] === this[_max]) {
             this._throwError("Circular Queue is full");
         }else {
+            //if the rear is set to -1 then set it to 0.
             if(this[_rear] === -1) {
                 this[_rear] = 0;
             }
 
+            //insert the value in the queue.
             this.queue[this[_rear]] = item;
 
+            //increment the rear to the new value.
             this[_rear] = (this[_rear] + 1) % this[_max];
 
+            //increment the size of the queue filled.
             this[_count] += 1;
 
+            //if the front is set to -1 then set it to 0.
             if(this[_front] === -1) {
                 this[_front] = 0;
             }
